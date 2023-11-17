@@ -5,26 +5,40 @@ namespace PhpRbacBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
-#[ORM\MappedSuperclass]
-#[ORM\UniqueConstraint('unique_code', ['code', 'parent_id'])]
-#[ORM\Index(name:"permission_idx", columns: ["code", "tree_left", "tree_right"])]
+/**
+ * @ORM\MappedSuperclass()
+ * @ORM\Table(uniqueConstraints={@UniqueConstraint(name="unique_code", columns={"code", "parent_id"})},
+ *     indexes={@Index(name="permission_idx", columns={"code", "tree_left", "tree_right"})})
+ *
+ */
 abstract class Node implements NodeInterface
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
     protected ?int $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string",length=255)
+     */
     protected ?string $code;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @ORM\Column(type="string",length=255)
+     */
     protected ?string $description;
 
-    #[ORM\Column(name:'tree_left', type: 'integer')]
+    /**
+     * @ORM\Column(type="integer",name="tree_left")
+     */
     protected ?int $left;
 
-    #[ORM\Column(name:'tree_right', type: 'integer')]
+    /**
+     * @ORM\Column(type="integer",name="tree_right")
+     */
     protected ?int $right;
 
     public function getId(): ?int

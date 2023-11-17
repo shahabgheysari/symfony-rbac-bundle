@@ -5,17 +5,25 @@ namespace PhpRbacBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 
-#[ORM\MappedSuperclass]
+/**
+ * @ORM\MappedSuperclass()
+ */
 abstract class Role extends Node implements RoleInterface
 {
-    #[ORM\ManyToMany(targetEntity: PermissionInterface::class, cascade:['persist', 'remove', 'refresh'])]
-    #[ORM\JoinTable(name: "role_permission")]
-    #[ORM\JoinColumn(name: "role_id", referencedColumnName: "id", onDelete: "cascade")]
-    #[ORM\InverseJoinColumn(name: "permission_id", referencedColumnName: "id", onDelete: "cascade")]
+
+    /**
+     * @ORM\ManyToMany(targetEntity=PermissionInterface::class,cascade={'persist', 'remove', 'refresh'})
+     * @ORM\JoinTable(name="role_permission",
+     *     joinColumns={@JoinColumn(name="role_id",referencedColumnName="id",onDelete="CASCADE")},
+     *    inverseJoinColumns={@JoinColumn(name= "permission_id", referencedColumnName= "id", onDelete= "cascade")}
+     * )
+     */
     private Collection $permissions;
 
-    #[ORM\ManyToOne(targetEntity: RoleInterface::class)]
-    #[ORM\JoinColumn(name: 'parent_id', referencedColumnName: 'id', nullable: true, onDelete:"cascade")]
+    /**
+     * @ORM\ManyToOne(targetEntity=RoleInterface::class)
+     * @ORM\JoinColumn(name= 'parent_id', referencedColumnName= 'id', nullable= true, onDelete="cascade")
+     */
     protected ?RoleInterface $parent = null;
 
     public function __construct()

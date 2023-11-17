@@ -8,14 +8,19 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpRbacBundle\Repository\UserRoleRepository;
 
-#[ORM\Entity(repositoryClass: UserRoleRepository::class)]
-
+/**
+ * @ORM\Entity(repositoryClass=UserRoleRepository::class)
+ */
 trait UserRoleTrait
 {
-    #[ORM\ManyToMany(targetEntity: RoleInterface::class, cascade:['persist', 'remove', 'refresh'])]
-    #[ORM\JoinTable(name: "user_role")]
-    #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id", onDelete: "cascade")]
-    #[ORM\InverseJoinColumn(name: "role_id", referencedColumnName: "id", onDelete: "cascade")]
+
+    /**
+     * @ORM\ManyToMany(targetEntity=RoleInterface::class,cascade={'persist', 'remove', 'refresh'})
+     * @ORM\JoinTable(name="user_role",
+     *     joinColumns={@JoinColumn(name="user_id",referencedColumnName="id",onDelete="CASCADE")},
+     *    inverseJoinColumns={@JoinColumn(name= "role_id", referencedColumnName= "id", onDelete= "cascade")}
+     * )
+     */
     private Collection $rbacRoles;
 
     public function __construct()
