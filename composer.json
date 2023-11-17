@@ -29,5 +29,6 @@
     },
     "autoload-dev": {
         "psr-4": { "Test\\PhpRbacBundle\\": "tests/" }
-    }
+    },
+    "minimum-stability": "stable"
 }
