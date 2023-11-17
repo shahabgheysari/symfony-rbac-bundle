@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping\Index;
 
 /**
  * @ORM\MappedSuperclass()
- * @ORM\Table(uniqueConstraints={@UniqueConstraint(name="unique_code", columns={"code", "parent_id"})},
- *     indexes={@Index(name="permission_idx", columns={"code", "tree_left", "tree_right"})})
+ * @ORM\Table(uniqueConstraints={@UniqueConstraint(columns={"code", "parent_id"})},
+ *     indexes={@Index(columns={"code", "tree_left", "tree_right"})})
  *
  */
 abstract class Node implements NodeInterface
