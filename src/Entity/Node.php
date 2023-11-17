@@ -4,6 +4,8 @@ namespace PhpRbacBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\String\Slugger\AsciiSlugger;
+use Doctrine\ORM\Mapping\UniqueConstraint;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * @ORM\MappedSuperclass()

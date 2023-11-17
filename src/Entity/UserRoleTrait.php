@@ -7,6 +7,7 @@ use PhpRbacBundle\Entity\RoleInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpRbacBundle\Repository\UserRoleRepository;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass=UserRoleRepository::class)
@@ -15,7 +16,7 @@ trait UserRoleTrait
 {
 
     /**
-     * @ORM\ManyToMany(targetEntity=RoleInterface::class,cascade={'persist', 'remove', 'refresh'})
+     * @ORM\ManyToMany(targetEntity=RoleInterface::class,cascade={"persist", "remove", "refresh"})
      * @ORM\JoinTable(name="user_role",
      *     joinColumns={@JoinColumn(name="user_id",referencedColumnName="id",onDelete="CASCADE")},
      *    inverseJoinColumns={@JoinColumn(name= "role_id", referencedColumnName= "id", onDelete= "cascade")}
