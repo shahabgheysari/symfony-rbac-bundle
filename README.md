@@ -1,6 +1,8 @@
 # PhpRbacBundle
 
-PhpRBACBundle is symfony 6 bundle with full access control library for PHP. It provides NIST Level 2 Standard Hierarchical Role Based Access Control as an easy to use library to PHP developers. It's a rework of the phprbac.net library made by OWASP for symfony 6.
+PhpRBACBundle is a Symfony 6 bundle with a full-access control library for PHP. It provides PHP developers with NIST Level 2 Standard Hierarchical Role-Based Access Control as an easy-to-use library. It's a rework of the phprbac.net library made by OWASP for Symfony 6.
+
+`This is NOT a replacement package for olivier127/rbac-bundle. I am going to use this as an internal requirement that will further be extended or maintained with specific functionalities or fixes.`
 
 ## Table of Content
 
@@ -17,7 +19,7 @@ PhpRBACBundle is symfony 6 bundle with full access control library for PHP. It p
 * [Symfony CLI commands](#symfony-cli-commands)
 * [Twig functions](#twig)
 
-## How it works ?
+## How it works?
 
 Go to https://phprbac.net/ :) to have the representation of permissions and roles as well as their interactions.
 
@@ -34,7 +36,7 @@ Go to https://phprbac.net/ :) to have the representation of permissions and role
 
 ## Installation
 
-just include the package with composer:
+just include the package with the composer:
 
 <pre>composer require olivier127/rbac-bundle</pre>
 
@@ -49,7 +51,7 @@ return [
 ```
 
 
-Add the PhpRbacBundle\Entity\UserRoleTrait inside the User entity class to add the rbac role relation.
+Add the PhpRbacBundle\Entity\UserRoleTrait inside the User entity class to add the RBAC role relation.
 
 Update the database schema with doctrine migration or doctrine schema update to create all the tables
 
